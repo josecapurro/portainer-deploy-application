@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  cantakerousmarket:
+    build: .
+    image: app/cantakerousmarket:v2
+    ports:
+      - "9999:9999"
+    deploy:
+      mode: global
+      replicas: 1
