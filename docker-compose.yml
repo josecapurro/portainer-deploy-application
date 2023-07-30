@@ -3,7 +3,7 @@ version: '2'
 services:
   cantakerousmarket:
     build: .
-    image: app/cantakerousmarket:v5
+    image: app/cantakerousmarket:v6
     ports:
       - "9999:9999"
     deploy:
