@@ -1,11 +1,43 @@
 version: '2'
 
 services:
-  cantakerousmarket:
-    build: .
+  app:
+    build: ./app
     image: app/cantakerousmarket:v7
     ports:
       - "9999:9999"
     deploy:
       mode: global
       replicas: 1
+  ingress:
+    build: ./nginx
+    image: nginx:latest
+    ports:
+      - "80:80"
+    deploy:
+      mode: global
+      replicas: 1
+  coredns:
+    build: ./coredns
+    image: coredns/coredns:latest
+    ports:
+      - "53:53"
+    deploy:
+      mode: global
+      replicas: 1
+  etcd:
+    build: ./etcd
+    image: docker.io/bitnami/etcd:3.5
+    environment:
+      - ALLOW_NONE_AUTHENTICATION=yes
+    volumes:
+      - etcd_data:/bitnami/etcd
+    ports:
+      - "2379:2379"
+      - "2380:2380"
+    deploy:
+      mode: global
+      replicas: 1
+volumes:
+  etcd_data:
+    driver: local
