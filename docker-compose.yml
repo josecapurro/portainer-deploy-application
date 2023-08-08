@@ -3,9 +3,13 @@ version: '2'
 services:
   app:
     build: .
-    image: cantakerousmarket:v13
+    image: cantakerousmarket:v14
     ports:
       - "9999:9999"
+    volumes:
+      - db:/app/db
     deploy:
       mode: global
       replicas: 1
+volumes:
+  db:
