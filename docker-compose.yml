@@ -3,7 +3,7 @@ version: '2'
 services:
   app:
     build: .
-    image: cantakerousmarket:v15
+    image: cantakerousmarket:v16
     ports:
       - "9999:9999"
     volumes:
